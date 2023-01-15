@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'ondemand_categories/index'
+  get 'ondemand_categories/show'
+  get 'ondemand_categories/new'
+  get 'ondemand_categories/edit'
+  get 'ondemand_categories/create'
+  get 'ondemand_categories/update'
+  get 'ondemand_categories/destroy'
   devise_for :users
   get 'ondemand_nets/index'
   get 'ondemand_nets/show'
