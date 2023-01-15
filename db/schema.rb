@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_063711) do
+ActiveRecord::Schema.define(version: 2023_01_15_063813) do
+
+  create_table "ondemand_nets", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "ondemand_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ondemand_id"], name: "index_ondemand_nets_on_ondemand_id"
+  end
 
   create_table "ondemand_reals", charset: "utf8mb4", force: :cascade do |t|
     t.string "title"
@@ -44,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_063711) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "ondemand_nets", "ondemands"
   add_foreign_key "ondemand_reals", "ondemands"
   add_foreign_key "ondemand_searches", "ondemand_tags"
   add_foreign_key "ondemand_searches", "ondemands"

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'ondemand_nets/index'
+  get 'ondemand_nets/show'
+  get 'ondemand_nets/new'
+  get 'ondemand_nets/edit'
+  get 'ondemand_nets/create'
+  get 'ondemand_nets/update'
+  get 'ondemand_nets/destroy'
   get 'ondemand_reals/index'
   get 'ondemand_reals/show'
   get 'ondemand_reals/new'
