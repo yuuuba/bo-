@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_064611) do
+ActiveRecord::Schema.define(version: 2023_01_15_064831) do
 
   create_table "communities", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(version: 2023_01_15_064611) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "community_tags", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "genres", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "community_id", null: false
+    t.bigint "community_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["community_id"], name: "index_genres_on_community_id"
+    t.index ["community_tag_id"], name: "index_genres_on_community_tag_id"
   end
 
   create_table "ondemand_categories", charset: "utf8mb4", force: :cascade do |t|
@@ -81,6 +96,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_064611) do
   end
 
   add_foreign_key "communities", "users"
+  add_foreign_key "genres", "communities"
+  add_foreign_key "genres", "community_tags"
   add_foreign_key "ondemand_nets", "ondemands"
   add_foreign_key "ondemand_reals", "ondemands"
   add_foreign_key "ondemand_searches", "ondemand_tags"
