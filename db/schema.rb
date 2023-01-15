@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_065940) do
+ActiveRecord::Schema.define(version: 2023_01_15_070108) do
 
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "community_topic_id", null: false
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2023_01_15_065940) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "community_topic_likes", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_topic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["community_topic_id"], name: "index_community_topic_likes_on_community_topic_id"
+    t.index ["user_id"], name: "index_community_topic_likes_on_user_id"
   end
 
   create_table "community_topic_tags", charset: "utf8mb4", force: :cascade do |t|
@@ -131,6 +140,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_065940) do
   add_foreign_key "articles", "community_topics"
   add_foreign_key "communities", "users"
   add_foreign_key "community_reviews", "users"
+  add_foreign_key "community_topic_likes", "community_topics"
+  add_foreign_key "community_topic_likes", "users"
   add_foreign_key "genres", "communities"
   add_foreign_key "genres", "community_tags"
   add_foreign_key "ondemand_nets", "ondemands"
