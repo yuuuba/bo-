@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'community_reviews/index'
+  get 'community_reviews/show'
+  get 'community_reviews/new'
+  get 'community_reviews/edit'
+  get 'community_reviews/create'
+  get 'community_reviews/update'
+  get 'community_reviews/destroy'
   get 'communities/index'
   get 'communities/show'
   get 'communities/new'
