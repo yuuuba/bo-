@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_065754) do
+ActiveRecord::Schema.define(version: 2023_01_15_065940) do
+
+  create_table "articles", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "community_topic_id", null: false
+    t.bigint "community_topic_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["community_topic_id"], name: "index_articles_on_community_topic_id"
+    t.index ["community_topic_tag_id"], name: "index_articles_on_community_topic_tag_id"
+  end
 
   create_table "communities", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -118,6 +127,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_065754) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "community_topic_tags"
+  add_foreign_key "articles", "community_topics"
   add_foreign_key "communities", "users"
   add_foreign_key "community_reviews", "users"
   add_foreign_key "genres", "communities"
