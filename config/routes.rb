@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'community_topics/index'
+  get 'community_topics/show'
+  get 'community_topics/new'
+  get 'community_topics/edit'
+  get 'community_topics/create'
+  get 'community_topics/update'
+  get 'community_topics/destroy'
   get 'community_reviews/index'
   get 'community_reviews/show'
   get 'community_reviews/new'
