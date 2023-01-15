@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_064500) do
+ActiveRecord::Schema.define(version: 2023_01_15_064611) do
+
+  create_table "communities", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_communities_on_user_id"
+  end
 
   create_table "ondemand_categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -72,6 +80,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_064500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "communities", "users"
   add_foreign_key "ondemand_nets", "ondemands"
   add_foreign_key "ondemand_reals", "ondemands"
   add_foreign_key "ondemand_searches", "ondemand_tags"

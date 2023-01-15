@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'communities/index'
+  get 'communities/show'
+  get 'communities/new'
+  get 'communities/edit'
+  get 'communities/create'
+  get 'communities/update'
+  get 'communities/destroy'
   get 'ondemand_categories/index'
   get 'ondemand_categories/show'
   get 'ondemand_categories/new'
