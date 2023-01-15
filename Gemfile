@@ -35,6 +35,7 @@ gem 'binding_of_caller'
 gem 'dotenv-rails'
 gem 'rubyzip', '2.3.0'
 gem 'net-smtp'
+gem 'devise'
 
 
 group :development, :test do
