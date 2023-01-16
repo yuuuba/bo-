@@ -8,9 +8,29 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
   </head>
 
   <body>
+    <header id="header">
+      <h1>
+        <a href="#"><img src="/assets/logo.png" alt="ぼ！"/></a>
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="#">リアル</li>
+          <li><a href="#">ネット</li>
+          <li><a href="#">募集する</li>
+          <li><a href="#">🔍</li>
+          <li><a href="#">ログイン</li>
+          <li><a href="#">新規登録</li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
+    <footer id="footer">
+      <p>© 2023 ぼ！ All Rights Reserved.</p>
+    </footer>
   </body>
 </html>
