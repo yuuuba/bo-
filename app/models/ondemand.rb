@@ -1,0 +1,2 @@
+class Ondemand < ApplicationRecord
+end

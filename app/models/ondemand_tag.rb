@@ -1,0 +1,2 @@
+class OndemandTag < ApplicationRecord
+end

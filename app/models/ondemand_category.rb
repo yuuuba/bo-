@@ -1,0 +1,2 @@
+class OndemandCategory < ApplicationRecord
+end

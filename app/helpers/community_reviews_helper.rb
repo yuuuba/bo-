@@ -1,0 +1,2 @@
+module CommunityReviewsHelper
+end
