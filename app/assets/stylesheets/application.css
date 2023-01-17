@@ -26,6 +26,14 @@ body {
   font-family: "M PLUS Rounded 1c";
 }
 
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
 a {
   text-decoration: none;
 }
@@ -41,19 +49,22 @@ li{
 
 /* header */
 #header {
-  max-width: 960px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
   padding: 0 4%;
   margin-bottom: 30px;
+  position: fixed;
+  text-align: center;
+  z-index: 10;
+  background-color: white;
 }
 
 #header img {
   width: 50%;
   height: 50%;
-  max-width: 100%;
 }
 
 #header ul {
@@ -74,29 +85,25 @@ li{
 
 /* main */
 #main {
-  max-width: 960px;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 0 15%;
+  padding: 100px 15% 0 15%;
   margin-bottom: 30px;
 }
 
 /* about */
 .about {  
-  max-width: 960px;
   align-items: center;
   text-align: center;
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
+  justify-content: center;
 }
 
 /* ondemand */
 #ondemand {
-  max-width: 960px;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
@@ -106,8 +113,6 @@ li{
 
 /* community */
 #community {
-  max-width: 960px;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
