@@ -26,12 +26,10 @@ body {
   font-family: "M PLUS Rounded 1c";
 }
 
-.wrapper {
+.container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 15%;
   display: flex;
-  justify-content: space-between;
 }
 
 a {
@@ -47,18 +45,31 @@ li{
   font-size: 1.2rem;
 }
 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  align-items: center;
+}
+
 /* header */
 #header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
   padding: 0 4%;
   margin-bottom: 30px;
   position: fixed;
   text-align: center;
   z-index: 10;
+  text-align: center;
+  background-color: white;
+}
+
+#header .container {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 1140px;
   background-color: white;
 }
 
@@ -83,17 +94,22 @@ li{
   opacity: 0.5;
 }
 
+
 /* main */
 #main {
-  align-items: center;
-  justify-content: space-between;
   margin: 0 auto;
   padding: 100px 15% 0 15%;
   margin-bottom: 30px;
 }
 
+#main .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* about */
-.about {  
+.container-about {  
   align-items: center;
   text-align: center;
   margin: 0 auto;
@@ -104,20 +120,29 @@ li{
 
 /* ondemand */
 #ondemand {
-  align-items: center;
-  justify-content: space-between;
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
 }
 
-/* community */
-#community {
+#ondemand .container {
+  display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+
+/* community */
+#community {
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
+}
+
+#community .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* sp */
