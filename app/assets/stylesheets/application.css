@@ -26,6 +26,12 @@ body {
   font-family: "M PLUS Rounded 1c";
 }
 
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+}
+
 a {
   text-decoration: none;
 }
@@ -39,21 +45,44 @@ li{
   font-size: 1.2rem;
 }
 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.single-container {
+  padding: 100px 0 0 0;
+  max-width: 800px;
+  margin: 0 auto;
+  align-items: center;
+}
+
 /* header */
 #header {
-  max-width: 960px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
   padding: 0 4%;
   margin-bottom: 30px;
+  position: fixed;
+  text-align: center;
+  z-index: 10;
+  text-align: center;
+  background-color: white;
+}
+
+#header .container {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 1140px;
+  background-color: white;
 }
 
 #header img {
   width: 50%;
   height: 50%;
-  max-width: 100%;
 }
 
 #header ul {
@@ -72,47 +101,55 @@ li{
   opacity: 0.5;
 }
 
+
 /* main */
 #main {
-  max-width: 960px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin: 0 auto;
-  padding: 0 15%;
+  padding: 100px 15% 0 15%;
   margin-bottom: 30px;
 }
 
+#main .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* about */
-.about {  
-  max-width: 960px;
+.container-about {  
   align-items: center;
   text-align: center;
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
+  justify-content: center;
 }
 
 /* ondemand */
 #ondemand {
-  max-width: 960px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
 }
 
-/* community */
-#community {
-  max-width: 960px;
+#ondemand .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+
+/* community */
+#community {
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
+}
+
+#community .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* sp */
