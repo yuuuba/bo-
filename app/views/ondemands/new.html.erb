@@ -1,2 +1,9 @@
-<h1>Ondemands#new</h1>
-<p>Find me in app/views/ondemands/new.html.erb</p>
+<h2>募集投稿</h2>
+<%= form_with model: @ondemand do |f|%>
+  <p>タイトル</p>
+  <%= f.text_field :title %>
+  <p>内容</p>
+    <%= f.text_area :body %>
+      <%= hidden_field_tag 'user[id]', current_user.id %>
+  <%= f.submit %>
+<% end %>
