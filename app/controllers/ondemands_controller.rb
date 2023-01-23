@@ -18,7 +18,7 @@ class OndemandsController < ApplicationController
     @ondemand = Ondemand.new(ondemand_params)
 
     if @ondemand.save!
-      redirect_to root_path
+      redirect_to new_ondemand_path
     end
   end
 
