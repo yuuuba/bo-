@@ -1,2 +1,12 @@
-<h1>Ondemands#show</h1>
-<p>Find me in app/views/ondemands/show.html.erb</p>
+<main>
+  <ondemand-title>
+    <%= @ondemand.title %>
+  </ondemand-title>
+
+  <div class="ondemand-content">
+    <%# img %>
+    <%= @ondemand.body %>
+    <%# prof-img %>
+    <%# 問い合わせるbtn %>
+  </div>
+</main>
