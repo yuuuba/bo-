@@ -32,6 +32,12 @@ class OndemandsController < ApplicationController
   end
 
   def destroy
+    if @ondemand.destroy
+      redirect_to ondemands_path, notice: "削除が完了しました"
+    else
+      flash.now[:danger] = "削除に失敗しました"
+      render 'show'
+    end
   end
 
   private
