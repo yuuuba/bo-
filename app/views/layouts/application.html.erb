@@ -19,14 +19,14 @@
           <%= link_to image_tag('logo.png') , '/' %>
         </h1>
         <nav>
-        <%#<ul>
-            <li><a href="#">リアル</li>
-            <li><a href="#">ネット</li>
-            <li><a href="#">募集する</li>
-            <li><a href="#">🔍</li>
-            <li><a href="#">ログイン</li>
-            <li><a href="#">新規登録</li>
-          </ul> %>
+        <ul>
+            <%#= link_to "リアル", ondemand_real_path %>
+            <%#= link_to "ネット", ondemand_net_path %>
+            <%= link_to "募集する", new_ondemand_path %>
+            <%#= link_to "🔍", ondemands_path %>
+            <%#= link_to "ログイン", new_user_session_path %>
+            <%#= link_to "新規登録", new_user_registration_path %>
+          </ul>
         </nav>
       </div>
     </header>
