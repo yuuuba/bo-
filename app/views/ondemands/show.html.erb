@@ -8,6 +8,8 @@
     <%= @ondemand.body %>
     <%# prof-img %>
     <%# 問い合わせるbtn %>
-    <%= link_to "編集", action: "edit" %>
+    <% if user_signed_in? && current_user.id == @ondemand.user_id %>
+      <%= link_to "編集", action: "edit" %>
+    <% end %>
   </div>
 </main>
