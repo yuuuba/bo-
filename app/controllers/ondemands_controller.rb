@@ -24,7 +24,7 @@ class OndemandsController < ApplicationController
 
   def update
     if @ondemand.update(ondemand_params)
-      redirect_to ondemand_path, notice: "アウトプットを編集しました"
+      redirect_to ondemand_path, notice: "編集しました"
     else
       flash.now[:danger] = "編集に失敗しました"
       render 'edit'
