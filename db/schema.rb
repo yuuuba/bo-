@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_070108) do
+ActiveRecord::Schema.define(version: 2023_02_01_074549) do
 
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "community_topic_id", null: false
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_070108) do
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_ondemands_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -148,4 +150,5 @@ ActiveRecord::Schema.define(version: 2023_01_15_070108) do
   add_foreign_key "ondemand_reals", "ondemands"
   add_foreign_key "ondemand_searches", "ondemand_tags"
   add_foreign_key "ondemand_searches", "ondemands"
+  add_foreign_key "ondemands", "users"
 end
