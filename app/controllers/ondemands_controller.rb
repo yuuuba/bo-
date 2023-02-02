@@ -15,7 +15,11 @@ class OndemandsController < ApplicationController
   end
 
   def create
-    @ondemand = Ondemand.new(ondemand_params)
+    @ondemand = Ondemand.new(
+      title:params[:ondemand][:title],
+      body:params[:ondemand][:body],
+      user_id:params[:user][:id]
+    )
 
     if @ondemand.save!
       redirect_to new_ondemand_path
@@ -45,8 +49,7 @@ class OndemandsController < ApplicationController
       @ondemand = Ondemand.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def ondemand_params
-      params.require(:ondemand).permit(:title, :body)
+      params.require(:ondemand).permit(:title, :body, :user_id)
     end
 end

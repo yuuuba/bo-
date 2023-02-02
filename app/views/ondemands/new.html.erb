@@ -1,9 +1,11 @@
-<h2>募集投稿</h2>
+<div class="ondemand-head">
+  <h2>募集内容</h2>
+</div>
 <%= form_with model: @ondemand do |f|%>
   <p>タイトル</p>
   <%= f.text_field :title %>
   <p>内容</p>
     <%= f.text_area :body %>
-      <%= hidden_field_tag 'user[id]', current_user.id %>
+    <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>
