@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_01_074549) do
+ActiveRecord::Schema.define(version: 2023_02_02_044733) do
 
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "community_topic_id", null: false
@@ -110,8 +110,7 @@ ActiveRecord::Schema.define(version: 2023_02_01_074549) do
   end
 
   create_table "ondemand_tags", charset: "utf8mb4", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
