@@ -1,0 +1,11 @@
+<h2>投稿一覧</h2>
+#タグによって絞り込んだ投稿一覧
+<h3>"タグが ─ "</h3>
+<%= strong= "#{@tag.name}" %>
+<h3>" ─ の投稿一覧"</h3>
+<br>
+<% @ondemands.each do |ondemand| %>
+  <%= link_to "#{ondemand.title}", ondemand %>
+<% end %>
+<br>
+<%= link_to 'ホーム', root_path %>

@@ -22,11 +22,11 @@ class OndemandsController < ApplicationController
       user_id:params[:user][:id]
     )
 
-    tag_list = params[:ondemand][:name].split(' ')
+    tag_list = params[:ondemand][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
 
     if @ondemand.save!
       @ondemand.save_tag(tag_list)
-      redirect_to new_ondemand_path
+      redirect_to ondemands_path
     end
   end
 
@@ -46,6 +46,11 @@ class OndemandsController < ApplicationController
       flash.now[:danger] = "削除に失敗しました"
       render 'show'
     end
+  end
+
+  def tag_search
+    @tag = OndemandTag.find(params[:ondemand_tag_id])
+    @ondemands = @tag.ondemands.all
   end
 
   private

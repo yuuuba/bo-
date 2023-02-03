@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :ondemands
   resources :ondemand_tags do
-    get 'ondemands', to: 'ondemands#search'
+    get 'ondemands', to: 'ondemands#tag_search'
   end
 end
