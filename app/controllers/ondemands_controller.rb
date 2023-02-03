@@ -5,6 +5,7 @@ class OndemandsController < ApplicationController
   end
 
   def show
+    @ondemand_tags = @ondemand.ondemand_tags
   end
 
   def new
@@ -21,7 +22,10 @@ class OndemandsController < ApplicationController
       user_id:params[:user][:id]
     )
 
+    tag_list = params[:ondemand][:name].split(' ')
+
     if @ondemand.save!
+      @ondemand.save_tag(tag_list)
       redirect_to new_ondemand_path
     end
   end

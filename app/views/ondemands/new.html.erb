@@ -1,11 +1,12 @@
-<div class="ondemand-head">
-  <h2>募集内容</h2>
-</div>
-<%= form_with model: @ondemand do |f|%>
+<h3>投稿する</h3>
+<%= form_with(model: @ondemand, url: ondemands_path, local: true) do |f| %>
   <p>タイトル</p>
   <%= f.text_field :title %>
+  <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
+  <%= f.text_field :name %>
   <p>内容</p>
-    <%= f.text_area :body %>
-    <%= hidden_field_tag 'user[id]', current_user.id %>
+  <%= f.text_area :body %>
+  <br>
+  <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>
