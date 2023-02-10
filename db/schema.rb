@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_06_041429) do
+ActiveRecord::Schema.define(version: 2023_02_10_083309) do
 
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "community_topic_id", null: false
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 2023_02_06_041429) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_ondemand_categories_on_parent_id"
   end
 
   create_table "ondemand_nets", charset: "utf8mb4", force: :cascade do |t|
