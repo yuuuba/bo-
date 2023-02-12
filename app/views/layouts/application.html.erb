@@ -17,17 +17,17 @@
       <div class="header-container">
         <h1 class="site-title">
           <%= link_to image_tag('logo.png') , '/' %>
+          <nav>
+            <ul>
+              <li><%#= link_to "リアル", ondemand_real_path %></li>
+              <li><%#= link_to "ネット", ondemand_net_path %></li>
+              <li><%= link_to "募集する", new_ondemand_path %></li>
+              <li><%#= link_to "🔍", ondemands_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+            </ul>
+          </nav>
         </h1>
-        <nav>
-        <ul>
-            <%#= link_to "リアル", ondemand_real_path %>
-            <%#= link_to "ネット", ondemand_net_path %>
-            <%= link_to "募集する", new_ondemand_path %>
-            <%#= link_to "🔍", ondemands_path %>
-            <%#= link_to "ログイン", new_user_session_path %>
-            <%#= link_to "新規登録", new_user_registration_path %>
-          </ul>
-        </nav>
       </div>
     </header>
     <div class="wrapper">

@@ -52,7 +52,7 @@ li{
   max-width: 800px;
   margin: 0 auto;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 200px;
 }
 
 .single-container {
@@ -64,7 +64,7 @@ li{
 
 /* header */
 #header {
-  max-width: 1024px;
+  width: 100%;
   padding: 0 4%;
   margin-bottom: 30px;
   position: fixed;
@@ -86,7 +86,6 @@ li{
 }
 
 #header img {
-  width: 50%;
   height: 50%;
 }
 
@@ -106,6 +105,9 @@ li{
   opacity: 0.5;
 }
 
+.site-title {
+  text-align: left;
+}
 
 /* main */
 #main {
