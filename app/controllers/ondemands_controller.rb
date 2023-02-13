@@ -22,6 +22,8 @@ class OndemandsController < ApplicationController
       user_id:params[:user][:id]
     )
 
+    @ondemand_tag = OndemandTag.new(ondemand_tag_params)
+
     tag_list = params[:ondemand][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
 
     if @ondemand.save!
@@ -60,5 +62,9 @@ class OndemandsController < ApplicationController
 
     def ondemand_params
       params.require(:ondemand).permit(:title, :body, :user_id)
+    end
+
+    def ondemand_tag_params
+      params.require(:ondemand_tag).permit(:name)
     end
 end

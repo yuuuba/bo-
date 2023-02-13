@@ -2,11 +2,20 @@
 <%= form_with(model: @ondemand, url: ondemands_path, local: true) do |f| %>
   <p>タイトル</p>
   <%= f.text_field :title %>
-  <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
-  <%= f.text_field :name %>
-  <p>内容</p>
-  <%= f.text_area :body %>
-  <br>
-  <%= hidden_field_tag 'user[id]', current_user.id %>
+    <%= fields_for @ondemand_category do |c| %>
+      <p>カテゴリ</p>
+      <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '1..6'"), :id, :name,
+                              :include_blank => "カテゴリを選択してください" %>
+      <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
+                              :include_blank => "カテゴリを選択してください" %>
+      <% end %>
+    <%= fields_for @ondemand_tag do |t| %>
+      <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
+      <%= t.text_field :name %>
+    <% end %>
+    <p>内容</p>
+    <%= f.text_area :body %>
+    <br>
+    <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>

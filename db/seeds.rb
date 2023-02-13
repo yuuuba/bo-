@@ -46,17 +46,17 @@ cities_list.each do |prefecture, city|
   prefecture.cities.create(name: city)
 end
 
-%w[ネット].each do |name|
-  OndemandCategory.create!(
-    name: name,
-    parent_id: "",
-  )
-end
+# %w[ネット].each do |name|
+#   OndemandCategory.create!(
+#     name: name,
+#     parent_id: "",
+#   )
+# end
 
 %w[スポーツ 音楽 ゲーム ボードゲーム アウトドア 交流].each do |name|
   OndemandCategory.create!(
     name: name,
-    parent_id: "1",
+    parent_id: "",
   )
 end
 
@@ -66,34 +66,34 @@ end
   相撲 柔道 剣道 空手 フェンシング ムエタイレスリング 総合格闘技 テコンドー モータースポーツF1 水泳 サーフィン その他スポーツ].each do |name|
   OndemandCategory.create!(
     name: name,
-    parent_id: "2",
+    parent_id: "1",
   )
 end
 
 %w[バンド ギター/アコギ ピアノ ボーカル JAZZ カラオケ].each do |name|
   OndemandCategory.create!(
     name: name,
-    parent_id: "3",
+    parent_id: "2",
   )
 end
 
 %w[ボードゲーム 囲碁 将棋 チェス 麻雀 その他].each do |name|
   OndemandCategory.create!(
     name: name,
-    parent_id: "5",
+    parent_id: "4",
   )
 end
 
 %w[キャンプ つり 山登り].each do |name|
   OndemandCategory.create!(
     name: name,
-    parent_id: "6",
+    parent_id: "5",
   )
 end
 
 %w[グルメ/食べ歩き カフェ巡り 飲み会 ナイトクラブ 自分磨き ダンス].each do |name|
   OndemandCategory.create!(
     name: name,
-    parent_id: "7",
+    parent_id: "6",
   )
 end
