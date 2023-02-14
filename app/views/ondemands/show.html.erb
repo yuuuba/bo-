@@ -1,2 +1,32 @@
-<h1>Ondemands#show</h1>
-<p>Find me in app/views/ondemands/show.html.erb</p>
+
+<p>カテゴリ</p>
+<%#=  @ondemand_category.name %>
+<p>タグ</p>
+<%#=  @ondemand_tag.each do |tag|  %>
+<%#=  tag.name  %>
+<%# end %>
+<br>
+
+<main>
+  <ondemand-title>
+    <p>タイトル</p>
+    <%= @ondemand.title %>
+  </ondemand-title>
+
+  <% if @ondemand.images.attached? %>
+    <% @ondemand.images.each do |image| %>
+      <%= image_tag image %> <br>
+    <% end %>
+  <% end %>
+
+  <div class="ondemand-content">
+    <%# img %>
+    <p>募集内容</p>
+    <%= @ondemand.body %>
+    <%# prof-img %>
+    <%# 問い合わせるbtn %>
+    <% if user_signed_in? && current_user.id == @ondemand.user_id %>
+      <%= link_to "編集", action: "edit" %>
+    <% end %>
+  </div>
+</main>

@@ -1,2 +1,12 @@
-<h1>Ondemands#edit</h1>
-<p>Find me in app/views/ondemands/edit.html.erb</p>
+<h2>募集投稿 編集</h2>
+<%= form_with model: @ondemand do |f|%>
+  <p>タイトル</p>
+  <%= f.text_field :title %>
+  <p>内容</p>
+    <%= f.text_area :body %>
+      <%= hidden_field_tag 'user[id]', current_user.id %>
+  <%= f.submit %>
+  <% if user_signed_in? && current_user.id == @ondemand.user_id %>
+    <%= link_to"削除", action: "destroy", method: :delete %>
+  <% end %>
+<% end %>

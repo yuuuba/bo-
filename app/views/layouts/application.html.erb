@@ -14,23 +14,28 @@
 
   <body>
     <header id="header">
-      <div class="container">
+      <div class="header-container">
         <h1 class="site-title">
           <%= link_to image_tag('logo.png') , '/' %>
+          <nav>
+            <ul>
+              <li><%#= link_to "リアル", ondemand_real_path %></li>
+              <li><%#= link_to "ネット", ondemand_net_path %></li>
+              <li><%= link_to "募集する", new_ondemand_path %></li>
+              <li><%#= link_to "🔍", ondemands_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+            </ul>
+          </nav>
         </h1>
-        <nav>
-        <%#<ul>
-            <li><a href="#">リアル</li>
-            <li><a href="#">ネット</li>
-            <li><a href="#">募集する</li>
-            <li><a href="#">🔍</li>
-            <li><a href="#">ログイン</li>
-            <li><a href="#">新規登録</li>
-          </ul> %>
-        </nav>
       </div>
     </header>
-    <%= yield %>
+    <div class="wrapper">
+      <div class="container">
+      <%= yield %>
+      </div>
+    </div>
     <footer id="footer">
       <p>© 2023 ぼ！ All Rights Reserved.</p>
     </footer>

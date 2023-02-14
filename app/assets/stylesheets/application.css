@@ -26,10 +26,9 @@ body {
   font-family: "M PLUS Rounded 1c";
 }
 
-.container {
+.header-container {
   max-width: 960px;
   margin: 0 auto;
-  display: flex;
 }
 
 a {
@@ -45,10 +44,15 @@ li{
   font-size: 1.2rem;
 }
 
+.wrapper {
+  max-width: 1024px;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
   align-items: center;
+  padding-top: 200px;
 }
 
 .single-container {
@@ -60,6 +64,7 @@ li{
 
 /* header */
 #header {
+  width: 100%;
   padding: 0 4%;
   margin-bottom: 30px;
   position: fixed;
@@ -81,7 +86,6 @@ li{
 }
 
 #header img {
-  width: 50%;
   height: 50%;
 }
 
@@ -101,9 +105,14 @@ li{
   opacity: 0.5;
 }
 
+.site-title {
+  text-align: left;
+}
 
 /* main */
 #main {
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   padding: 100px 15% 0 15%;
   margin-bottom: 30px;
@@ -127,6 +136,8 @@ li{
 
 /* ondemand */
 #ondemand {
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
@@ -141,6 +152,8 @@ li{
 
 /* community */
 #community {
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   padding: 0 15%;
   margin-bottom: 30px;
@@ -163,6 +176,7 @@ li{
   .site-title {
     justify-content: center;
     margin: 0 auto;
+    display: flex;
   }
 
   #header h1 img {
