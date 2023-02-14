@@ -6,7 +6,9 @@ class OndemandsController < ApplicationController
   end
 
   def show
-    @ondemand_tags = @ondemand.ondemand_tags
+    # @ondemand_tags = @ondemand.ondemand_tags
+    TODO カテゴリー正しくid渡るよう修正↓
+    #@ondemand_category = params[:id]
   end
 
   def new
@@ -33,7 +35,7 @@ class OndemandsController < ApplicationController
 
     if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save!
       @ondemand.save_tag(tag_list)
-      redirect_to ondemands_path
+      redirect_to ondemand_path(@ondemand.id)
     end
   end
 

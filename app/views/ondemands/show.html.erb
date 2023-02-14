@@ -1,10 +1,27 @@
+
+<p>カテゴリ</p>
+<%#=  @ondemand_category.name %>
+<p>タグ</p>
+<%#=  @ondemand_tag.each do |tag|  %>
+<%#=  tag.name  %>
+<%# end %>
+<br>
+
 <main>
   <ondemand-title>
+    <p>タイトル</p>
     <%= @ondemand.title %>
   </ondemand-title>
 
+  <% if @ondemand.images.attached? %>
+    <% @ondemand.images.each do |image| %>
+      <%= image_tag image %> <br>
+    <% end %>
+  <% end %>
+
   <div class="ondemand-content">
     <%# img %>
+    <p>募集内容</p>
     <%= @ondemand.body %>
     <%# prof-img %>
     <%# 問い合わせるbtn %>

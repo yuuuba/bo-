@@ -4,6 +4,7 @@
   <%= f.text_field :title %>
     <%= fields_for @ondemand_category do |c| %>
       <p>カテゴリ</p>
+      TODO where部分修正 parent_id入ってない
       <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '1..6'"), :id, :name,
                               :include_blank => "カテゴリを選択してください" %>
       <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
