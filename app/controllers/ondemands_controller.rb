@@ -1,5 +1,6 @@
 class OndemandsController < ApplicationController
   before_action :set_ondemand, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
   end
@@ -10,6 +11,8 @@ class OndemandsController < ApplicationController
 
   def new
     @ondemand = Ondemand.new
+    @ondemand_category = OndemandCategory.new
+    @ondemand_tag = OndemandTag.new
   end
 
   def edit
@@ -19,14 +22,16 @@ class OndemandsController < ApplicationController
     @ondemand = Ondemand.new(
       title:params[:ondemand][:title],
       body:params[:ondemand][:body],
-      user_id:params[:user][:id]
+      user_id:current_user.id
     )
+
+    @ondemand_category = OndemandCategory.new(ondemand_category_params)
 
     @ondemand_tag = OndemandTag.new(ondemand_tag_params)
 
-    tag_list = params[:ondemand][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
+    tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
 
-    if @ondemand.save!
+    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save!
       @ondemand.save_tag(tag_list)
       redirect_to ondemands_path
     end
@@ -61,7 +66,11 @@ class OndemandsController < ApplicationController
     end
 
     def ondemand_params
-      params.require(:ondemand).permit(:title, :body, :user_id)
+      params.require(:ondemand).permit(:title, :body, :user_id, images: [])
+    end
+
+    def ondemand_category_params
+      params.require(:ondemand_category).permit(:name, :parent_id)
     end
 
     def ondemand_tag_params

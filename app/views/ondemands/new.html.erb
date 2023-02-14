@@ -15,7 +15,7 @@
     <% end %>
     <p>内容</p>
     <%= f.text_area :body %>
-    <br>
+    <%= f.file_field :images, multiple: true %><br>
     <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>
