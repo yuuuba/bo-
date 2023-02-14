@@ -24,6 +24,7 @@
               <li><%= link_to "募集する", new_ondemand_path %></li>
               <li><%#= link_to "🔍", ondemands_path %></li>
               <li><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>
             </ul>
           </nav>
