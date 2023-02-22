@@ -1,22 +1,32 @@
 <h3>投稿する</h3>
 <%= form_with(model: @ondemand, url: ondemands_path, local: true) do |f| %>
   <p>タイトル</p>
-  <%= f.text_field :title %>
+    <%= f.text_field :title %>
+  <p>内容</p>
+    <%= f.text_area :body %>
+  <p>画像</p>
+    <%= f.file_field :images, multiple: true %><br>
     <%= fields_for @ondemand_category do |c| %>
       <p>カテゴリ</p>
-      #TODO where部分修正 parent_id入ってない
-      <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '1..6'"), :id, :name,
-                              :include_blank => "カテゴリを選択してください" %>
-      <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
-                              :include_blank => "カテゴリを選択してください" %>
-      <% end %>
+    #TODO where部分修正 parent_id入ってない
+    <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '1..6'"), :id, :name,
+                            :include_blank => "カテゴリを選択してください" %>
+    <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
+                            :include_blank => "カテゴリを選択してください" %>
+    <% end %>
+    <%= fields_for @attitude do |a| %>
+      <%= a.check_box :serious %>
+      <%= a.label :serious, "ガチ" %>
+      <%= a.check_box :loose %>
+      <%= a.label :loose, "ゆるい" %>
+    <% end %>
     <%= fields_for @ondemand_tag do |t| %>
       <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
       <%= t.text_field :name %>
     <% end %>
-    <p>内容</p>
-    <%= f.text_area :body %>
-    <%= f.file_field :images, multiple: true %><br>
+
+
+   
     <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>
