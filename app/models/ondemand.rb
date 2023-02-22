@@ -3,6 +3,8 @@ class Ondemand < ApplicationRecord
   has_many :ondemand_searches, dependent: :destroy
   has_many :ondemand_tags, through: :ondemand_searches
   has_many_attached :images
+  has_many :attitudes
+
 
   def save_tag(sent_tags)
     current_tags = self.ondemand_tags.pluck(:name) unless self.ondemand_tags.nil?

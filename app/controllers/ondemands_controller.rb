@@ -15,6 +15,7 @@ class OndemandsController < ApplicationController
     @ondemand = Ondemand.new
     @ondemand_category = OndemandCategory.new
     @ondemand_tag = OndemandTag.new
+    @attitude = Attitude.new
   end
 
   def edit
@@ -27,13 +28,15 @@ class OndemandsController < ApplicationController
       user_id:current_user.id
     )
 
+    @attitude = Attitude.new(attitude_params)
+
     @ondemand_category = OndemandCategory.new(ondemand_category_params)
 
     @ondemand_tag = OndemandTag.new(ondemand_tag_params)
 
     tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
 
-    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save!
+    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save! && @attitude.save!
       @ondemand.save_tag(tag_list)
       redirect_to ondemand_path(@ondemand.id)
     end
@@ -77,5 +80,9 @@ class OndemandsController < ApplicationController
 
     def ondemand_tag_params
       params.require(:ondemand_tag).permit(:name)
+    end
+
+    def attitude_params
+      params.require(:attitude).permit(:serious, :loose)
     end
 end
