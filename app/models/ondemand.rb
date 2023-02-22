@@ -4,6 +4,7 @@ class Ondemand < ApplicationRecord
   has_many :ondemand_tags, through: :ondemand_searches
   has_many_attached :images
   has_many :attitudes
+  has_many :charms
 
 
   def save_tag(sent_tags)

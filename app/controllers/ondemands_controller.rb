@@ -16,6 +16,7 @@ class OndemandsController < ApplicationController
     @ondemand_category = OndemandCategory.new
     @ondemand_tag = OndemandTag.new
     @attitude = Attitude.new
+    @charm = Charm.new
   end
 
   def edit
@@ -34,9 +35,11 @@ class OndemandsController < ApplicationController
 
     @ondemand_tag = OndemandTag.new(ondemand_tag_params)
 
+    @charm = Charm.new(charm_params)
+
     tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
 
-    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save! && @attitude.save!
+    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save! && @attitude.save! && @charm.save!
       @ondemand.save_tag(tag_list)
       redirect_to ondemand_path(@ondemand.id)
     end
@@ -84,5 +87,9 @@ class OndemandsController < ApplicationController
 
     def attitude_params
       params.require(:attitude).permit(:serious, :loose)
+    end
+
+    def charm_params
+      params.require(:charm).permit(:influential_person, :welcome_beginner, :body)
     end
 end

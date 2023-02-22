@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_030454) do
+ActiveRecord::Schema.define(version: 2023_02_22_121952) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2023_02_22_030454) do
   create_table "attitudes", charset: "utf8mb4", force: :cascade do |t|
     t.boolean "serious", default: false, null: false
     t.boolean "loose", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "charms", charset: "utf8mb4", force: :cascade do |t|
+    t.boolean "influential_person", default: false, null: false
+    t.boolean "welcome_beginner", default: false, null: false
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

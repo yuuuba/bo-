@@ -20,13 +20,17 @@
       <%= a.check_box :loose %>
       <%= a.label :loose, "ゆるい" %>
     <% end %>
+    <%= fields_for @charm do |charm| %>
+      <%= charm.check_box :influential_person %>
+      <%= charm.label :influential_person, "実力者所属" %>
+      <%= charm.check_box :welcome_beginner %>
+      <%= charm.label :welcome_beginner, "初心者歓迎" %>
+      <%= charm.text_area :body %>
+    <% end %>
     <%= fields_for @ondemand_tag do |t| %>
       <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
       <%= t.text_field :name %>
     <% end %>
-
-
-   
     <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>
