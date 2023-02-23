@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  place: MyString
+  cost: 1
+  belonging: MyString
+  dress: MyString
+  status: false
+  member: 1
+  age_group: MyString
+
+two:
+  place: MyString
+  cost: 1
+  belonging: MyString
+  dress: MyString
+  status: false
+  member: 1
+  age_group: MyString

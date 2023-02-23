@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_132944) do
+ActiveRecord::Schema.define(version: 2023_02_23_035503) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -114,6 +114,18 @@ ActiveRecord::Schema.define(version: 2023_02_22_132944) do
   create_table "community_topics", charset: "utf8mb4", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "details", charset: "utf8mb4", force: :cascade do |t|
+    t.string "place"
+    t.integer "cost"
+    t.string "belonging"
+    t.string "dress"
+    t.boolean "status", default: false, null: false
+    t.integer "member"
+    t.string "age_group"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
