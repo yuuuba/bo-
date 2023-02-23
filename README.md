@@ -9,4 +9,4 @@ perf: パフォーマンスを向上させるためのコード変更
 test: 不足しているテストを追加したり、既存のテストを修正したりすること
 chore: ビルドプロセスや補助ツール、ライブラリの変更 (ドキュメント生成など)
 
-引用:https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type
+引用:https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type# ruby_book
