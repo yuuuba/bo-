@@ -31,6 +31,12 @@
       <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
       <%= t.text_field :name %>
     <% end %>
+    <%= fields_for @note do |n| %>
+      <p>最低条件</p>
+      <%= n.text_field :minimum_requirement %>
+      <p>禁止事項</p>
+      <%= n.text_field :prohibited %>
+    <% end %>
     <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>

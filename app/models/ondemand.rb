@@ -1,6 +1,6 @@
 class Ondemand < ApplicationRecord
   belongs_to :user
-  belongs_to :note
+  #belongs_to :note
   has_many :ondemand_searches, dependent: :destroy
   has_many :ondemand_tags, through: :ondemand_searches
   has_many_attached :images
