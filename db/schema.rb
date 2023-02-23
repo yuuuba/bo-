@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_23_035503) do
+ActiveRecord::Schema.define(version: 2023_02_23_045146) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -193,6 +193,14 @@ ActiveRecord::Schema.define(version: 2023_02_23_035503) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "attitude_id"
+    t.bigint "charm_id"
+    t.bigint "detail_id"
+    t.bigint "note_id"
+    t.index ["attitude_id"], name: "index_ondemands_on_attitude_id"
+    t.index ["charm_id"], name: "index_ondemands_on_charm_id"
+    t.index ["detail_id"], name: "index_ondemands_on_detail_id"
+    t.index ["note_id"], name: "index_ondemands_on_note_id"
     t.index ["user_id"], name: "index_ondemands_on_user_id"
   end
 
@@ -230,5 +238,9 @@ ActiveRecord::Schema.define(version: 2023_02_23_035503) do
   add_foreign_key "ondemand_reals", "ondemands"
   add_foreign_key "ondemand_searches", "ondemand_tags"
   add_foreign_key "ondemand_searches", "ondemands"
+  add_foreign_key "ondemands", "attitudes"
+  add_foreign_key "ondemands", "charms"
+  add_foreign_key "ondemands", "details"
+  add_foreign_key "ondemands", "notes"
   add_foreign_key "ondemands", "users"
 end
