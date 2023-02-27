@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_23_045146) do
+ActiveRecord::Schema.define(version: 2023_02_27_024435) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -47,21 +47,6 @@ ActiveRecord::Schema.define(version: 2023_02_23_045146) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["community_topic_id"], name: "index_articles_on_community_topic_id"
     t.index ["community_topic_tag_id"], name: "index_articles_on_community_topic_tag_id"
-  end
-
-  create_table "attitudes", charset: "utf8mb4", force: :cascade do |t|
-    t.boolean "serious", default: false, null: false
-    t.boolean "loose", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "charms", charset: "utf8mb4", force: :cascade do |t|
-    t.boolean "influential_person", default: false, null: false
-    t.boolean "welcome_beginner", default: false, null: false
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "cities", charset: "utf8mb4", force: :cascade do |t|
@@ -118,18 +103,6 @@ ActiveRecord::Schema.define(version: 2023_02_23_045146) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "details", charset: "utf8mb4", force: :cascade do |t|
-    t.string "place"
-    t.integer "cost"
-    t.string "belonging"
-    t.string "dress"
-    t.boolean "status", default: false, null: false
-    t.integer "member"
-    t.string "age_group"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "genres", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "community_id", null: false
     t.bigint "community_tag_id", null: false
@@ -139,19 +112,27 @@ ActiveRecord::Schema.define(version: 2023_02_23_045146) do
     t.index ["community_tag_id"], name: "index_genres_on_community_tag_id"
   end
 
-  create_table "notes", charset: "utf8mb4", force: :cascade do |t|
-    t.text "minimum_requirement"
-    t.text "prohibited"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "ondemand_categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "parent_id"
     t.index ["parent_id"], name: "index_ondemand_categories_on_parent_id"
+  end
+
+  create_table "ondemand_details", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "cost"
+    t.text "item"
+    t.text "dress"
+    t.integer "member"
+    t.integer "age_group"
+    t.string "mood"
+    t.string "condition"
+    t.string "prohibition"
+    t.string "charm"
+    t.boolean "status", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ondemand_nets", charset: "utf8mb4", force: :cascade do |t|
@@ -193,14 +174,8 @@ ActiveRecord::Schema.define(version: 2023_02_23_045146) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.bigint "attitude_id"
-    t.bigint "charm_id"
-    t.bigint "detail_id"
-    t.bigint "note_id"
-    t.index ["attitude_id"], name: "index_ondemands_on_attitude_id"
-    t.index ["charm_id"], name: "index_ondemands_on_charm_id"
-    t.index ["detail_id"], name: "index_ondemands_on_detail_id"
-    t.index ["note_id"], name: "index_ondemands_on_note_id"
+    t.bigint "ondemand_detail_id"
+    t.index ["ondemand_detail_id"], name: "index_ondemands_on_ondemand_detail_id"
     t.index ["user_id"], name: "index_ondemands_on_user_id"
   end
 
@@ -234,13 +209,11 @@ ActiveRecord::Schema.define(version: 2023_02_23_045146) do
   add_foreign_key "community_topic_likes", "users"
   add_foreign_key "genres", "communities"
   add_foreign_key "genres", "community_tags"
+  add_foreign_key "ondemand_categories", "ondemands", column: "parent_id"
   add_foreign_key "ondemand_nets", "ondemands"
   add_foreign_key "ondemand_reals", "ondemands"
   add_foreign_key "ondemand_searches", "ondemand_tags"
   add_foreign_key "ondemand_searches", "ondemands"
-  add_foreign_key "ondemands", "attitudes"
-  add_foreign_key "ondemands", "charms"
-  add_foreign_key "ondemands", "details"
-  add_foreign_key "ondemands", "notes"
+  add_foreign_key "ondemands", "ondemand_details"
   add_foreign_key "ondemands", "users"
 end

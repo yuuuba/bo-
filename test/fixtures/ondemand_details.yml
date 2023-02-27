@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cost: 1
+  item: MyText
+  dress: MyText
+  member: 1
+  age_group: 1
+  mood: MyString
+  condition: MyString
+  prohibition: MyString
+  charm: MyString
+  status: false
+
+two:
+  cost: 1
+  item: MyText
+  dress: MyText
+  member: 1
+  age_group: 1
+  mood: MyString
+  condition: MyString
+  prohibition: MyString
+  charm: MyString
+  status: false

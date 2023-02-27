@@ -37,6 +37,7 @@ gem 'rubyzip', '2.3.0'
 gem 'net-smtp'
 gem 'devise'
 gem 'kaminari'
+gem 'rails-erd'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
