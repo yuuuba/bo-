@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_13_082513) do
+ActiveRecord::Schema.define(version: 2023_02_27_024023) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -118,6 +118,21 @@ ActiveRecord::Schema.define(version: 2023_02_13_082513) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "parent_id"
     t.index ["parent_id"], name: "index_ondemand_categories_on_parent_id"
+  end
+
+  create_table "ondemand_details", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "cost"
+    t.text "item"
+    t.text "dress"
+    t.integer "member"
+    t.integer "age_group"
+    t.string "mood"
+    t.string "condition"
+    t.string "prohibition"
+    t.string "charm"
+    t.boolean "status", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ondemand_nets", charset: "utf8mb4", force: :cascade do |t|

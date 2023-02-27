@@ -1,0 +1,2 @@
+class OndemandDetail < ApplicationRecord
+end
