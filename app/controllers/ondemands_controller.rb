@@ -15,6 +15,7 @@ class OndemandsController < ApplicationController
     @ondemand = Ondemand.new
     @ondemand_category = OndemandCategory.new
     @ondemand_tag = OndemandTag.new
+    @ondemand_detail = OndemandDetail.new
   end
 
   def edit
@@ -31,6 +32,8 @@ class OndemandsController < ApplicationController
 
     @ondemand_tag = OndemandTag.new(ondemand_tag_params)
 
+    @ondemand_detail = OndemandDetail.new(ondemand_detail_params)
+    
     tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
 
     if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save!
@@ -77,5 +80,9 @@ class OndemandsController < ApplicationController
 
     def ondemand_tag_params
       params.require(:ondemand_tag).permit(:name)
+    end
+
+    def ondemand_detail_params
+      params.require(:ondemand_detail).permit(:cost,:item,:dress,:member,:age_group,:mood,:condition,:prohibition,:charm,:status)
     end
 end
