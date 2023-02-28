@@ -15,10 +15,7 @@ class OndemandsController < ApplicationController
     @ondemand = Ondemand.new
     @ondemand_category = OndemandCategory.new
     @ondemand_tag = OndemandTag.new
-    @attitude = Attitude.new
-    @charm = Charm.new
-    @note = Note.new
-    @detail = Detail.new
+    @ondemand_detail = OndemandDetail.new
   end
 
   def edit
@@ -31,21 +28,15 @@ class OndemandsController < ApplicationController
       user_id:current_user.id
     )
 
-    @attitude = Attitude.new(attitude_params)
-
     @ondemand_category = OndemandCategory.new(ondemand_category_params)
 
     @ondemand_tag = OndemandTag.new(ondemand_tag_params)
 
-    @charm = Charm.new(charm_params)
+    @ondemand_detail = OndemandDetail.new(ondemand_detail_params)
     
-    @note = Note.new(note_params)
-
-    @detail = Detail.new(detail_params)
-
     tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
 
-    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save! && @attitude.save! && @charm.save! && @note.save! && @detail.save!
+    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save!
       @ondemand.save_tag(tag_list)
       redirect_to ondemand_path(@ondemand.id)
     end
@@ -91,19 +82,7 @@ class OndemandsController < ApplicationController
       params.require(:ondemand_tag).permit(:name)
     end
 
-    def attitude_params
-      params.require(:attitude).permit(:serious, :loose)
-    end
-
-    def charm_params
-      params.require(:charm).permit(:influential_person, :welcome_beginner, :body)
-    end
-
-    def note_params
-      params.require(:note).permit(:minimum_requirement, :prohibited)
-    end
-
-    def detail_params
-      params.require(:detail).permit(:place,:cost,:belonging,:dress,:status,:member, :age_group)
+    def ondemand_detail_params
+      params.require(:ondemand_detail).permit(:cost,:item,:dress,:member,:age_group,:mood,:condition,:prohibition,:charm,:status)
     end
 end
