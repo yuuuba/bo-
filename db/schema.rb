@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_27_024435) do
+ActiveRecord::Schema.define(version: 2023_02_28_052733) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2023_02_27_024435) do
     t.boolean "status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "place"
   end
 
   create_table "ondemand_nets", charset: "utf8mb4", force: :cascade do |t|
@@ -175,6 +176,8 @@ ActiveRecord::Schema.define(version: 2023_02_27_024435) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.bigint "ondemand_detail_id"
+    t.bigint "ondemand_category_id"
+    t.index ["ondemand_category_id"], name: "index_ondemands_on_ondemand_category_id"
     t.index ["ondemand_detail_id"], name: "index_ondemands_on_ondemand_detail_id"
     t.index ["user_id"], name: "index_ondemands_on_user_id"
   end
@@ -209,11 +212,12 @@ ActiveRecord::Schema.define(version: 2023_02_27_024435) do
   add_foreign_key "community_topic_likes", "users"
   add_foreign_key "genres", "communities"
   add_foreign_key "genres", "community_tags"
-  add_foreign_key "ondemand_categories", "ondemands", column: "parent_id"
+  add_foreign_key "ondemand_categories", "ondemand_categories", column: "parent_id"
   add_foreign_key "ondemand_nets", "ondemands"
   add_foreign_key "ondemand_reals", "ondemands"
   add_foreign_key "ondemand_searches", "ondemand_tags"
   add_foreign_key "ondemand_searches", "ondemands"
+  add_foreign_key "ondemands", "ondemand_categories"
   add_foreign_key "ondemands", "ondemand_details"
   add_foreign_key "ondemands", "users"
 end

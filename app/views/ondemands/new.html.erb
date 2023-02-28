@@ -14,44 +14,33 @@
     <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
                             :include_blank => "カテゴリを選択してください" %>
     <% end %>
-    <%= fields_for @attitude do |a| %>
-      <%= a.check_box :serious %>
-      <%= a.label :serious, "ガチ" %>
-      <%= a.check_box :loose %>
-      <%= a.label :loose, "ゆるい" %>
-    <% end %>
-    <%= fields_for @charm do |charm| %>
-      <%= charm.check_box :influential_person %>
-      <%= charm.label :influential_person, "実力者所属" %>
-      <%= charm.check_box :welcome_beginner %>
-      <%= charm.label :welcome_beginner, "初心者歓迎" %>
-      <%= charm.text_area :body %>
-    <% end %>
     <%= fields_for @ondemand_tag do |t| %>
       <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
       <%= t.text_field :name %>
     <% end %>
-    <%= fields_for @note do |n| %>
-      <p>最低条件</p>
-      <%= n.text_field :minimum_requirement %>
-      <p>禁止事項</p>
-      <%= n.text_field :prohibited %>
-    <% end %>
-    <%= fields_for @detail do |d| %>
+    <%= fields_for @ondemand_detail do |d| %>
+      <p>募集状態</p>
+      <%= d.text_field :status %>
       <p>場所</p>
       <%= d.text_field :place %>
       <p>費用</p>
       <%= d.number_field :cost %>
       <p>持ち物</p>
-      <%= d.text_area :belonging %>
+      <%= d.text_area :item %>
       <p>服装</p>
       <%= d.text_area :dress %>
-      <p>募集状態</p>
-      <%= d.text_field :status %>
       <p>現在の人数</p>
       <%= d.number_field :member %>
       <p>年齢層</p>
       <%= d.text_field :age_group %>
+      <p>コミュニティの雰囲気</p>
+      <%= d.text_field :mood %>
+      <p>コミュニティの魅力</p>
+      <%= d.text_field :charm %>
+      <p>条件</p>
+      <%= d.text_field :condition %>
+      <p>禁止事項</p>
+      <%= d.text_field :prohibition %>
     <% end %>
     <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>

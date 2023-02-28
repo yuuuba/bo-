@@ -20,6 +20,7 @@ City.destroy_all
 Prefecture.destroy_all
 OndemandCategory.destroy_all
 
+
 require 'csv'
 
 # CSV読み込み
