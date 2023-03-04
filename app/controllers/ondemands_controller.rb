@@ -25,7 +25,8 @@ class OndemandsController < ApplicationController
     @ondemand = Ondemand.new(
       title:params[:ondemand][:title],
       body:params[:ondemand][:body],
-      user_id:current_user.id
+      user_id:current_user.id,
+      images:params[:ondemand][:images]
     )
 
     @ondemand_category = OndemandCategory.new(ondemand_category_params)

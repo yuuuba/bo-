@@ -1,12 +1,4 @@
 
-<p>カテゴリ</p>
-<%#=  @ondemand_category.name %>
-<p>タグ</p>
-<%#=  @ondemand_tag.each do |tag|  %>
-<%#=  tag.name  %>
-<%# end %>
-<br>
-
 <main>
   <ondemand-title>
     <p>タイトル</p>
@@ -15,7 +7,7 @@
 
   <% if @ondemand.images.attached? %>
     <% @ondemand.images.each do |image| %>
-      <%= image_tag image %> <br>
+      <%= image_tag image, width: 200, height: 200 %> <br>
     <% end %>
   <% end %>
 

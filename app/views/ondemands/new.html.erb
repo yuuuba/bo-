@@ -1,5 +1,5 @@
 <h3>投稿する</h3>
-<%= form_with(model: @ondemand, url: ondemands_path, local: true) do |f| %>
+<%= form_with model: @ondemand, local: true do |f| %>
   <p>タイトル</p>
     <%= f.text_field :title %>
   <p>内容</p>
