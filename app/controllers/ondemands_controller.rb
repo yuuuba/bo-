@@ -16,6 +16,9 @@ class OndemandsController < ApplicationController
     @ondemand_category = OndemandCategory.new
     @ondemand_tag = OndemandTag.new
     @ondemand_detail = OndemandDetail.new
+    # FIXME: モデル側に「親カテゴリ (root_category)」の呼び出しができる検索メソッドとして命名し、それを呼び出す
+    # @ondemand_categories_select = OndemandCategory.where(%q(parent_id = ""))
+    @ondemand_categories_select = OndemandCategory.root_categories
   end
 
   def edit

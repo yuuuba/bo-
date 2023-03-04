@@ -9,7 +9,8 @@
     <%= fields_for @ondemand_category do |c| %>
       <p>カテゴリ</p>
     #TODO where部分修正 parent_id入ってない
-    <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '1..6'"), :id, :name,
+    # NOTE: optgroup のほうがユーザにやさしい? : https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup
+    <%= c.collection_select :parent_id, @ondemand_categories_select, :id, :name,
                             :include_blank => "カテゴリを選択してください" %>
     <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
                             :include_blank => "カテゴリを選択してください" %>
