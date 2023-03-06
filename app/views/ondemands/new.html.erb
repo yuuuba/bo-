@@ -12,7 +12,7 @@
     # NOTE: optgroup のほうがユーザにやさしい? : https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup
     <select>
       # TODO: Hash で階層表現されたデータ構造を生成する (grouped_options_for_select に渡したい)
-      <%= grouped_options_for_select(OndemandCategory.root_categories) %>
+      <%= grouped_options_for_select(OndemandCategory.root_categories.to_group) %>
     </select>
     <% end %>
     <%= fields_for @ondemand_tag do |t| %>
