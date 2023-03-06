@@ -16,9 +16,31 @@ class OndemandsController < ApplicationController
     @ondemand_category = OndemandCategory.new
     @ondemand_tag = OndemandTag.new
     @ondemand_detail = OndemandDetail.new
-    # FIXME: モデル側に「親カテゴリ (root_category)」の呼び出しができる検索メソッドとして命名し、それを呼び出す
-    # @ondemand_categories_select = OndemandCategory.where(%q(parent_id = ""))
-    @ondemand_categories_select = OndemandCategory.root_categories
+    
+    # 例:
+    # grouped_options = {
+    #   'North America' => [['United States','US'], 'Canada'],
+    #   'Europe' => ['Denmark','Germany','France']
+    # }
+    
+    # TODO: Hash で階層表現されたデータ構造を生成する (grouped_options_for_select に渡したい)
+    ondemand_category_root_ids = OndemandCategory.root_categories.ids
+    child_categories = OndemandCategory.where(parent_id: ondemand_category_root_ids)
+    # temp_hash = {}
+    # temp_hash.merge({root_category_name: 'foo', child_categories: []})
+    # grouped_categories = ...
+
+    # グループ化について:
+    # もうひとつの方法...? : https://www.letitride.jp/entry/2020/06/15/161826
+    # https://stackoverflow.com/questions/60841892/rewriting-an-activerecord-query-as-recursive-sql
+  
+    # 1. OndemandCategory.root_categories.ids で「親カテゴリ ID 群」が取得できる
+    # 2. 「親カテゴリ ID 群」を持つ ID... 「サブカテゴリ」を検索する
+    # 2-a. SQL の IN 句を使う...? Rails の構文では...?
+    # 3. 「親カテゴリ」「サブカテゴリ」をそれぞれの ID によって紐付ける (Hash として作り上げる)
+    # 3-a. group_by メソッドでグループ化 (parent_id で集合させる) できそう...? : https://ruby-doc.org/2.7.6/Enumerable.html#group_by-method
+    # 4. (紐付けた状態を保ちつつ) View で利用可能な値・フォーマットに変換する
+    # 5. 「4.」で作ったデータを View に渡す
   end
 
   def edit

@@ -10,10 +10,10 @@
       <p>カテゴリ</p>
     #TODO where部分修正 parent_id入ってない
     # NOTE: optgroup のほうがユーザにやさしい? : https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup
-    <%= c.collection_select :parent_id, @ondemand_categories_select, :id, :name,
-                            :include_blank => "カテゴリを選択してください" %>
-    <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
-                            :include_blank => "カテゴリを選択してください" %>
+    <select>
+      # TODO: Hash で階層表現されたデータ構造を生成する (grouped_options_for_select に渡したい)
+      <%= grouped_options_for_select(OndemandCategory.root_categories) %>
+    </select>
     <% end %>
     <%= fields_for @ondemand_tag do |t| %>
       <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
