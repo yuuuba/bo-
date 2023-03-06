@@ -1,5 +1,5 @@
 <h3>投稿する</h3>
-<%= form_with(model: @ondemand, url: ondemands_path, local: true) do |f| %>
+<%= form_with model: @ondemand, local: true do |f| %>
   <p>タイトル</p>
     <%= f.text_field :title %>
   <p>内容</p>
@@ -9,10 +9,12 @@
     <%= fields_for @ondemand_category do |c| %>
       <p>カテゴリ</p>
     #TODO where部分修正 parent_id入ってない
-    <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '1..6'"), :id, :name,
-                            :include_blank => "カテゴリを選択してください" %>
-    <%= c.collection_select :parent_id, OndemandCategory.where("parent_id = '7..nil'"), :id, :name,
-                            :include_blank => "カテゴリを選択してください" %>
+    # NOTE: optgroup のほうがユーザにやさしい? : https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup
+    <select>
+      # TODO: Hash で階層表現されたデータ構造を生成する (grouped_options_for_select に渡したい)
+      # TODO: formで送る方法,parameterに:ondemand_categoryを含めるhttps://stackoverflow.com/questions/4037537/how-to-create-a-grouped-select-box-using-simple-form
+      <%= grouped_options_for_select(OndemandCategory.root_categories.to_group) %>
+    </select>
     <% end %>
     <%= fields_for @ondemand_tag do |t| %>
       <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
