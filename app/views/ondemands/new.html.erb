@@ -12,6 +12,7 @@
     # NOTE: optgroup のほうがユーザにやさしい? : https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup
     <select>
       # TODO: Hash で階層表現されたデータ構造を生成する (grouped_options_for_select に渡したい)
+      # TODO: formで送る方法,parameterに:ondemand_categoryを含めるhttps://stackoverflow.com/questions/4037537/how-to-create-a-grouped-select-box-using-simple-form
       <%= grouped_options_for_select(OndemandCategory.root_categories.to_group) %>
     </select>
     <% end %>
