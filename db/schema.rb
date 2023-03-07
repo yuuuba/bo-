@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_02_28_052733) do
 
-  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "articles", charset: "utf8mb4", force: :cascade do |t|
+  create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "community_topic_id", null: false
     t.bigint "community_topic_tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["community_topic_tag_id"], name: "index_articles_on_community_topic_tag_id"
   end
 
-  create_table "cities", charset: "utf8mb4", force: :cascade do |t|
+  create_table "cities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "prefecture_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
   end
 
-  create_table "communities", charset: "utf8mb4", force: :cascade do |t|
+  create_table "communities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
-  create_table "community_reviews", charset: "utf8mb4", force: :cascade do |t|
+  create_table "community_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.bigint "user_id", null: false
@@ -74,13 +74,13 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["user_id"], name: "index_community_reviews_on_user_id"
   end
 
-  create_table "community_tags", charset: "utf8mb4", force: :cascade do |t|
+  create_table "community_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "community_topic_likes", charset: "utf8mb4", force: :cascade do |t|
+  create_table "community_topic_likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "community_topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -89,21 +89,21 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["user_id"], name: "index_community_topic_likes_on_user_id"
   end
 
-  create_table "community_topic_tags", charset: "utf8mb4", force: :cascade do |t|
+  create_table "community_topic_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "community_topics", charset: "utf8mb4", force: :cascade do |t|
+  create_table "community_topics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "genres", charset: "utf8mb4", force: :cascade do |t|
+  create_table "genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "community_id", null: false
     t.bigint "community_tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["community_tag_id"], name: "index_genres_on_community_tag_id"
   end
 
-  create_table "ondemand_categories", charset: "utf8mb4", force: :cascade do |t|
+  create_table "ondemand_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["parent_id"], name: "index_ondemand_categories_on_parent_id"
   end
 
-  create_table "ondemand_details", charset: "utf8mb4", force: :cascade do |t|
+  create_table "ondemand_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "cost"
     t.text "item"
     t.text "dress"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.string "place"
   end
 
-  create_table "ondemand_nets", charset: "utf8mb4", force: :cascade do |t|
+  create_table "ondemand_nets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.bigint "ondemand_id", null: false
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["ondemand_id"], name: "index_ondemand_nets_on_ondemand_id"
   end
 
-  create_table "ondemand_reals", charset: "utf8mb4", force: :cascade do |t|
+  create_table "ondemand_reals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.bigint "ondemand_id", null: false
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["ondemand_id"], name: "index_ondemand_reals_on_ondemand_id"
   end
 
-  create_table "ondemand_searches", charset: "utf8mb4", force: :cascade do |t|
+  create_table "ondemand_searches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "ondemand_id", null: false
     t.bigint "ondemand_tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -163,13 +163,13 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["ondemand_tag_id"], name: "index_ondemand_searches_on_ondemand_tag_id"
   end
 
-  create_table "ondemand_tags", charset: "utf8mb4", force: :cascade do |t|
+  create_table "ondemand_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ondemands", charset: "utf8mb4", force: :cascade do |t|
+  create_table "ondemands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
@@ -182,13 +182,13 @@ ActiveRecord::Schema.define(version: 2023_02_28_052733) do
     t.index ["user_id"], name: "index_ondemands_on_user_id"
   end
 
-  create_table "prefectures", charset: "utf8mb4", force: :cascade do |t|
+  create_table "prefectures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
