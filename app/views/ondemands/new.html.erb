@@ -10,10 +10,11 @@
       <p>カテゴリ</p>
     #TODO where部分修正 parent_id入ってない
     # NOTE: optgroup のほうがユーザにやさしい? : https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup
-    <select>
+    <select name="ondemand_category[name]">
       # TODO: Hash で階層表現されたデータ構造を生成する (grouped_options_for_select に渡したい)
       # TODO: formで送る方法,parameterに:ondemand_categoryを含めるhttps://stackoverflow.com/questions/4037537/how-to-create-a-grouped-select-box-using-simple-form
-      <%= grouped_options_for_select(OndemandCategory.root_categories.to_group) %>
+      # https://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-grouped_options_for_select
+      <%= grouped_options_for_select(OndemandCategory.to_group) %>
     </select>
     <% end %>
     <%= fields_for @ondemand_tag do |t| %>
