@@ -11,6 +11,7 @@ class OndemandCategory < ApplicationRecord
       hash_grouped_categories =
         root_categories.map do |root_category|
           {
+            # to_sym を使う場合は 読み出し時、「hash["スポーツ".to_sym]」のように書く
             root_category.name.to_sym => root_category.children.map(&:name)
           }
         end
