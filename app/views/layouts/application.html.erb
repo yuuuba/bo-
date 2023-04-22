@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
@@ -33,7 +34,7 @@
     </header>
     <div class="wrapper">
       <div class="container">
-      <%= yield %>
+        <%= yield %>
       </div>
     </div>
     <footer id="footer">
