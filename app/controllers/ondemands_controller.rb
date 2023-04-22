@@ -47,24 +47,21 @@ class OndemandsController < ApplicationController
   end
 
   def create
-    @ondemand = Ondemand.new(
+    ondemand = Ondemand.new(
       title:params[:ondemand][:title],
       body:params[:ondemand][:body],
       user_id:current_user.id,
       images:params[:ondemand][:images]
     )
 
-    @ondemand_category = OndemandCategory.new(ondemand_category_params)
-
-    @ondemand_tag = OndemandTag.new(ondemand_tag_params)
-
-    @ondemand_detail = OndemandDetail.new(ondemand_detail_params)
+    ondemand_category = OndemandCategory.new(ondemand_category_params)
     
-    tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if{|x| x == /( |　)+/}
-
-    if @ondemand.save! && @ondemand_category.save! && @ondemand_tag.save!
-      @ondemand.save_tag(tag_list)
-      redirect_to ondemand_path(@ondemand.id)
+    tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if { |x| x =~ /( |　)+/}
+    raise RuntimeError if tag_list.empty?
+    
+    if ondemand.save! && ondemand_category.save!
+      ondemand.save_tag(tag_list)
+      redirect_to ondemand_path(ondemand.id)
     end
   end
 
