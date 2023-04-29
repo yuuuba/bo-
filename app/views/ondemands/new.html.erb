@@ -1,50 +1,70 @@
-<h3>投稿する</h3>
+<div class="page-title">
+  <h3>投稿する</h3>
+</div>
+
 <%= form_with model: @ondemand, local: true do |f| %>
-  <p>タイトル</p>
+
+  <main>
+    <p>タイトル</p>
     <%= f.text_field :title %>
-  <p>内容</p>
+    <p>内容</p>
     <%= f.text_area :body %>
-  <p>画像</p>
+    <p>画像</p>
     <%= f.file_field :images, multiple: true %><br>
-    <%= fields_for @ondemand_category do |c| %>
-      <p>カテゴリ</p>
-    #TODO where部分修正 parent_id入ってない
-    # NOTE: optgroup のほうがユーザにやさしい? : https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup
+  </main>
+
+  <%= fields_for @ondemand_category do |c| %>
+  
+  <div class="category">
+    <p>カテゴリ</p>
     <select name="ondemand_category[name]">
-      # TODO: Hash で階層表現されたデータ構造を生成する (grouped_options_for_select に渡したい)
-      # TODO: formで送る方法,parameterに:ondemand_categoryを含めるhttps://stackoverflow.com/questions/4037537/how-to-create-a-grouped-select-box-using-simple-form
-      # https://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-grouped_options_for_select
       <%= grouped_options_for_select(OndemandCategory.to_group) %>
     </select>
-    <% end %>
-    <%= fields_for @ondemand_tag do |t| %>
-      <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
-      <%= t.text_field :name %>
-    <% end %>
-    <%= fields_for @ondemand_detail do |d| %>
-      <p>募集状態</p>
-      <%= d.text_field :status %>
-      <p>場所</p>
-      <%= d.text_field :place %>
-      <p>費用</p>
-      <%= d.number_field :cost %>
-      <p>持ち物</p>
-      <%= d.text_area :item %>
-      <p>服装</p>
-      <%= d.text_area :dress %>
-      <p>現在の人数</p>
-      <%= d.number_field :member %>
-      <p>年齢層</p>
-      <%= d.text_field :age_group %>
-      <p>コミュニティの雰囲気</p>
-      <%= d.text_field :mood %>
-      <p>コミュニティの魅力</p>
-      <%= d.text_field :charm %>
-      <p>条件</p>
-      <%= d.text_field :condition %>
-      <p>禁止事項</p>
-      <%= d.text_field :prohibition %>
-    <% end %>
-    <%= hidden_field_tag 'user[id]', current_user.id %>
+  </div>
+
+  <% end %>
+  <%= fields_for @ondemand_tag do |t| %>
+
+  <div class="tag">
+    <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
+    <%= t.text_field :name %>
+  </div>
+
+  <% end %>
+  <%= fields_for @ondemand_detail do |d| %>
+
+  <div class="status">
+    <p>場所</p>
+    <%= d.text_field :place %>
+    <p>募集状態</p>
+    <%= d.text_field :status %>
+    <p>コミュニティの雰囲気</p>
+    <%= d.text_field :mood %>
+    <p>コミュニティの魅力</p>
+    <%= d.text_field :charm %>
+  </div>
+
+  <div class="detail">
+    <p>現在の人数</p>
+    <%= d.number_field :member %>
+    <p>年齢層</p>
+    <%= d.text_field :age_group %>
+    <p>費用</p>
+    <%= d.number_field :cost %>
+    <p>持ち物</p>
+    <%= d.text_area :item %>
+    <p>服装</p>
+    <%= d.text_area :dress %>
+  </div>
+
+  <div class="attention">
+    <p>条件</p>
+    <%= d.text_field :condition %>
+    <p>禁止事項</p>
+    <%= d.text_field :prohibition %>
+  </div>
+
+  <% end %>
+  <%= hidden_field_tag 'user[id]', current_user.id %>
   <%= f.submit %>
 <% end %>
