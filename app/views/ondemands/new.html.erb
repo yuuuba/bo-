@@ -4,18 +4,22 @@
 
 <%= form_with model: @ondemand, local: true do |f| %>
 
-  <main>
-    <p>タイトル</p>
+  <div class="form-field">
+    <label for="title">タイトル</label>
     <%= f.text_field :title %>
+  </div>
+  <div class="form-field">
     <p>内容</p>
     <%= f.text_area :body %>
+  </div>
+  <div class="form-field">
     <p>画像</p>
     <%= f.file_field :images, multiple: true %><br>
-  </main>
+  </div>
 
   <%= fields_for @ondemand_category do |c| %>
   
-  <div class="category">
+  <div class="form-field">
     <p>カテゴリ</p>
     <select name="ondemand_category[name]">
       <%= grouped_options_for_select(OndemandCategory.to_group) %>
@@ -25,7 +29,7 @@
   <% end %>
   <%= fields_for @ondemand_tag do |t| %>
 
-  <div class="tag">
+  <div class="form-field">
     <p>タグ ※スペースを入力することで複数のタグを付けることができます。</p>
     <%= t.text_field :name %>
   </div>
@@ -33,7 +37,7 @@
   <% end %>
   <%= fields_for @ondemand_detail do |d| %>
 
-  <div class="status">
+  <div class="form-field">
     <p>場所</p>
     <%= d.text_field :place %>
     <p>募集状態</p>
@@ -44,7 +48,7 @@
     <%= d.text_field :charm %>
   </div>
 
-  <div class="detail">
+  <div class="form-field">
     <p>現在の人数</p>
     <%= d.number_field :member %>
     <p>年齢層</p>
@@ -57,7 +61,7 @@
     <%= d.text_area :dress %>
   </div>
 
-  <div class="attention">
+  <div class="form-field">
     <p>条件</p>
     <%= d.text_field :condition %>
     <p>禁止事項</p>

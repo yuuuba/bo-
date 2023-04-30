@@ -11,6 +11,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
@@ -34,7 +36,9 @@
     </header>
     <div class="wrapper">
       <div class="container">
-        <%= yield %>
+        <main>
+          <%= yield %>
+        </main>
       </div>
     </div>
     <footer id="footer">
