@@ -58,9 +58,14 @@ class OndemandsController < ApplicationController
     
     tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if { |x| x =~ /( |　)+/}
     raise RuntimeError if tag_list.empty?
+
+    ondemand_detail = OndemandDetail.new(ondemand_detail_params)
     
-    if ondemand.save! && ondemand_category.save!
+    if ondemand.save! && ondemand_category.save! 
       ondemand.save_tag(tag_list)
+    end
+
+    if ondemand_detail.save!
       redirect_to ondemand_path(ondemand.id)
     end
   end
@@ -106,6 +111,6 @@ class OndemandsController < ApplicationController
     end
 
     def ondemand_detail_params
-      params.require(:ondemand_detail).permit(:cost,:item,:dress,:member,:age_group,:mood,:condition,:prohibition,:charm,:status)
+      params.require(:ondemand_detail).permit(:place, :status, :mood, :charm, :member, :age_group, :cost, :item, :dress, :condition, :prohibition)
     end
 end
