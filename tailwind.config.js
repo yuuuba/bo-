@@ -1,21 +1,29 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          "primary": "#97ed80",
+          "secondary": "#dd836c",
+          "accent": "#efb5fc",
+          "neutral": "#282531",
+          "base-100": "#FAF9FB",
+          "info": "#83A8F6",
+          "success": "#47D17E",
+          "warning": "#F4CD4E",
+          "error": "#FB4655",
+        },
+      },
+    ],
+  },
+  content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
+    './app/assets/stylesheets/**/*.css',
+    './app/javascript/**/*.js'
   ],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {
-      // 色の設定を拡張
-      colors: {
-        accent: '#FFB600',
-      },
-    },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  plugins: [
+    require("daisyui"),
+    require('@tailwindcss/typography')
+  ],
 }
