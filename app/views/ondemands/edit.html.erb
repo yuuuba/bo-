@@ -1,12 +1,81 @@
 <h2>募集投稿 編集</h2>
-<%= form_with model: @ondemand do |f|%>
-  <p>タイトル</p>
-  <%= f.text_field :title %>
-  <p>内容</p>
-    <%= f.text_area :body %>
-      <%= hidden_field_tag 'user[id]', current_user.id %>
-  <%= f.submit %>
-  <% if user_signed_in? && current_user.id == @ondemand.user_id %>
-    <%= link_to"削除", action: "destroy", method: :delete %>
+
+<div class="page-title">
+  <h3>新規作成</h3>
+</div>
+
+<%= form_with model: @ondemand, local: true do |f| %>
+  
+  <div class="form-field" >
+    <%= f.label :title , "タイトル" %>
+    <%= f.text_field :title, class:"input input-bordered input-md w-full max-w-xs" %>
+  </div>
+
+  </div>
+
+  <div class="form-field">
+    <%= f.label :body , "内容" %>
+    <%= f.text_area :body, class:"textarea textarea-bordered textarea-lg w-full max-w-xs" %>
+  </div>
+
+  <div class="form-field">
+    <%= f.label :image , "画像" %>
+    <%= f.file_field :images, multiple: true, class: "file-input file-input-bordered file-input-primary w-full max-w-xs"%><br>
+  </div>
+
+  
+  <%= fields_for @ondemand_category do |c| %>
+  
+  <div class="form-field">
+    <p>カテゴリ</p>
+    <select name="ondemand_category[name]", class="select select-primary w-full max-w-xs">
+      <%= grouped_options_for_select(OndemandCategory.to_group) %>
+    </select>
+  </div>
+
   <% end %>
+  <%= fields_for @ondemand_tag do |t| %>
+
+  <div class="form-field">
+    <%= t.label :tag , "タグ ※スペースを入力することで複数のタグを付けることができます。" %>
+    <%= t.text_field :name, class:"input input-bordered input-md w-full max-w-xs" %>
+  </div>
+
+  <% end %>
+  <%= fields_for @ondemand_detail do |d| %>
+
+  <div class="form-field">
+    <p>場所</p>
+    <%= d.text_field :place ,class:"input input-bordered input-md w-full max-w-xs"%>
+    <p>募集状態</p>
+    <%= d.text_field :status ,class:"select w-full max-w-xs" %>
+    <p>コミュニティの雰囲気</p>
+    <%= d.text_field :mood ,class:"input input-bordered input-md w-full max-w-xs" %>
+    <p>コミュニティの魅力</p>
+    <%= d.text_field :charm ,class:"textarea textarea-bordered textarea-lg w-full max-w-xs" %>
+  </div>
+
+  <div class="form-field">
+    <p>現在の人数</p>
+    <%= d.number_field :member ,class:"input input-bordered input-md w-full max-w-xs"%>
+    <p>年齢層</p>
+    <%= d.text_field :age_group ,class:"input input-bordered input-md w-full max-w-xs"%>
+    <p>費用</p>
+    <%= d.number_field :cost %>
+    <p>持ち物</p>
+    <%= d.text_area :item ,class:"input input-bordered input-md w-full max-w-xs"%>
+    <p>服装</p>
+    <%= d.text_area :dress ,class:"input input-bordered input-md w-full max-w-xs"%>
+  </div>
+
+  <div class="form-field">
+    <p>条件</p>
+    <%= d.text_field :condition, class:"textarea textarea-bordered textarea-lg w-full max-w-xs"%>
+    <p>禁止事項</p>
+    <%= d.text_field :prohibition, class:"textarea textarea-bordered textarea-lg w-full max-w-xs"%>
+  </div>
+
+  <% end %>
+  <%= hidden_field_tag 'user[id]', current_user.id %>
+  <%= f.submit "投稿する", class: "btn btn-active btn-primary"%>
 <% end %>
