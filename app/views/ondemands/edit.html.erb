@@ -77,5 +77,7 @@
 
   <% end %>
   <%= hidden_field_tag 'user[id]', current_user.id %>
-  <%= f.submit "投稿する", class: "btn btn-active btn-primary"%>
-<% end %>
+  <%= f.submit "編集する", class: "btn btn-active btn-primary"%>
+  <%= link_to '削除する' , @ondemand , method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"},
+  class: 'btn btn-error' %>
+  <% end %>
