@@ -43,9 +43,6 @@ class OndemandsController < ApplicationController
     # 5. 「4.」で作ったデータを View に渡す
   end
 
-  def edit
-  end
-
   def create
     ondemand = Ondemand.new(
       title:params[:ondemand][:title],
@@ -70,8 +67,18 @@ class OndemandsController < ApplicationController
     end
   end
 
+  def edit
+    @ondemand_category = OndemandCategory.find(params[:id])
+    @ondemand_tag = OndemandTag.find(params[:id])
+    @ondemand_detail = OndemandDetail.find(params[:id])
+  end
+
   def update
-    if @ondemand.update(ondemand_params)
+    @ondemand_category = OndemandCategory.find(params[:id])
+    @ondemand_tag = OndemandTag.find(params[:id])
+    @ondemand_detail = OndemandDetail.find(params[:id])
+    
+    if @ondemand.update(ondemand_params) && @ondemand_category.update(ondemand_category_params) && @ondemand_tag.update(ondemand_tag_params) && @ondemand_detail.update(ondemand_detail_params)
       redirect_to ondemand_path, notice: "編集しました"
     else
       flash.now[:danger] = "編集に失敗しました"
@@ -94,6 +101,7 @@ class OndemandsController < ApplicationController
   end
 
   private
+
     def set_ondemand
       @ondemand = Ondemand.find(params[:id])
     end
