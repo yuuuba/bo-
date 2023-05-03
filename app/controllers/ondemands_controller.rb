@@ -6,7 +6,7 @@ class OndemandsController < ApplicationController
   end
 
   def show
-    # @ondemand_tags = @ondemand.ondemand_tags
+    @ondemand_tags = @ondemand.ondemand_tags
     #TODO カテゴリー正しくid渡るよう修正↓
     #@ondemand_category = params[:id]
   end
