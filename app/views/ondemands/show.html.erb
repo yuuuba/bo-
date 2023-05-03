@@ -1,24 +1,112 @@
 
+# info
+<div class="ondemand-info">
+  <div class="text-sm breadcrumbs">
+  <ul>
+    <li><a>Home</a></li> 
+    <li><a>Documents</a></li> 
+    <li>Add Document</li>
+  </ul>
+  </div>
+
+  <div class="text-sm breadcrumbs">
+  <ul>
+    <li><a>Home</a></li> 
+    <li><a>Documents</a></li> 
+    <li>Add Document</li>
+  </ul>
+  </div>
+
+  <div class="text-sm breadcrumbs">
+  <ul>
+    <li><a>Home</a></li> 
+    <li><a>Documents</a></li> 
+    <li>Add Document</li>
+  </ul>
+  </div>
+</div>
+
+# main
 <main>
-  <ondemand-title>
-    <p>タイトル</p>
-    <%= @ondemand.title %>
-  </ondemand-title>
-
-  <% if @ondemand.images.attached? %>
-    <% @ondemand.images.each do |image| %>
-      <%= image_tag image, width: 200, height: 200 %> <br>
-    <% end %>
-  <% end %>
-
-  <div class="ondemand-content">
-    <%# img %>
-    <p>募集内容</p>
-    <%= @ondemand.body %>
-    <%# prof-img %>
-    <%# 問い合わせるbtn %>
+  <div class="main-top">
+    <div class="profile-img">
+    </div>
+    <div class="ondemand-title">
+      <p>タイトル</p>
+      <%= @ondemand.title %>
+    </div>
+    <div class="edit">
     <% if user_signed_in? && current_user.id == @ondemand.user_id %>
       <%= link_to "編集", action: "edit" %>
     <% end %>
+    </div>
+  </div>
+
+  <div class="ondemand-content">
+    <div class="img">
+      <% if @ondemand.images.attached? %>
+        <% @ondemand.images.each do |image| %>
+          <%= image_tag image, width: 200, height: 200 %> <br>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="ondemand-detail">
+    </div>
+  </div>
+
+  <div class="attention-area">
+    <div class="calender">
+    </div>
+    <div class="attention">
+    </div>
   </div>
 </main>
+
+# detail
+<div class="detail">
+  <h2 class="">募集詳細</h2>
+  <div class="detail-look">
+  </div>
+  <button class="btn btn-primary">応募する</button>
+</div>
+
+# question
+<div class="question">
+  <h2 class="">質問</h2>
+  <div class="question-look">
+    <ul>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="question-btn">
+    <button class="btn btn-primary">質問する</button>
+    <button class="btn btn-primary">もっと見る</button>
+  </div>
+</div>
+
+# community
+<div class="question">
+  <h2 class="">募集元にコミュニティがあります</h2>
+  <div class="question-look">
+    <ul>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="question-btn">
+    <button class="btn btn-primary">コミュニティ詳細</button>
+    <button class="btn btn-primary">公開日誌</button>
+  </div>
+</div>
+
+# recommend
+<div class="recommend">
+  <h2 class="">類似の募集</h2>
+  <div class="question-look">
+    <ul>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
