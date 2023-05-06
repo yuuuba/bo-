@@ -49,19 +49,20 @@ class OndemandsController < ApplicationController
     ondemand_category = OndemandCategory.new(ondemand_category_params)
 
     if ondemand_detail.save!
+      ondemand_category.save!
       ondemand = Ondemand.new(
         title: params[:ondemand][:title],
         body: params[:ondemand][:body],
         user_id: current_user.id,
         images: params[:ondemand][:images],
         ondemand_detail_id: ondemand_detail.id,
-        ondemand_category_id: ondemand_category.id
+        ondemand_category_id: params[:ondemand][:ondemand_category_id]
       )
 
       tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if { |x| x =~ /( |　)+/}
       raise RuntimeError if tag_list.empty?
 
-      if ondemand.save! && ondemand_category.save!
+      if ondemand.save!
         ondemand.save_tag(tag_list)
         redirect_to ondemand_path(ondemand.id)
       else
@@ -110,11 +111,17 @@ class OndemandsController < ApplicationController
     end
 
     def ondemand_params
-      params.require(:ondemand).permit(:title, :body, :user_id, images: [])
+      params.require(:ondemand).permit(:title, :body, :user_id, images: [], ondemand_category_id: [])
     end
 
+    # def ondemand_category_params
+    #   params.require(:ondemand).permit(:name, :parent_id, ondemand_category_id: [])
+    # end
+
     def ondemand_category_params
-      params.require(:ondemand_category).permit(:name, :parent_id)
+      # NG:
+      # params.require(:ondemand_category).permit(ondemand_category_id: [])
+      params.require(:ondemand).permit(ondemand_category_id: [])
     end
 
     def ondemand_tag_params
