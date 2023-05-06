@@ -26,9 +26,7 @@
   
   <div class="form-field">
     <p>カテゴリ</p>
-    <select name="ondemand_category[name]", class="select select-primary w-full max-w-xs">
-      <%= grouped_options_for_select(OndemandCategory.to_group) %>
-    </select>
+    <%= f.grouped_collection_select :ondemand_category_id, OndemandCategory.root_categories, :children, :name, :id, :name, { prompt: '選択してください' }, { class: 'select select-bordered w-full max-w-xs' } %>
   </div>
 
   <% end %>
