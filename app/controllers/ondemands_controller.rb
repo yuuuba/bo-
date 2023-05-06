@@ -7,6 +7,7 @@ class OndemandsController < ApplicationController
 
   def show
     @ondemand_tags = @ondemand.ondemand_tags
+    @ondemand_categories = @ondemand.ondemand_categories
     #TODO カテゴリー正しくid渡るよう修正↓
     #@ondemand_category = params[:id]
   end
@@ -44,23 +45,8 @@ class OndemandsController < ApplicationController
   end
 
   def create
-    ondemand = Ondemand.new(
-      title:params[:ondemand][:title],
-      body:params[:ondemand][:body],
-      user_id:current_user.id,
-      images:params[:ondemand][:images]
-    )
-
-    ondemand_category = OndemandCategory.new(ondemand_category_params)
-    
-    tag_list = params[:ondemand_tag][:name].split(/( |　)+/).delete_if { |x| x =~ /( |　)+/}
-    raise RuntimeError if tag_list.empty?
-
     ondemand_detail = OndemandDetail.new(ondemand_detail_params)
-    
-    if ondemand.save! && ondemand_category.save! 
-      ondemand.save_tag(tag_list)
-    end
+    ondemand_category = OndemandCategory.new(ondemand_category_params)
 
     if ondemand_detail.save!
       ondemand_category.save!

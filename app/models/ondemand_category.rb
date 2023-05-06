@@ -3,6 +3,8 @@ class OndemandCategory < ApplicationRecord
                       foreign_key: "parent_id"
 
   belongs_to :parent, class_name: "OndemandCategory", optional: true
+  has_one :ondemand
+
 
   scope :root_categories, -> { where(parent_id: [nil, '']) }
 
