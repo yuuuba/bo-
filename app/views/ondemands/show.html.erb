@@ -9,18 +9,25 @@
   </ul>
   </div>
 
-  <div class="">
+  <div class="breadcrumbs">
     <ul class="flex">
-      <% @ondemand_tags.each do |tag| %>
-      <li><%= "##{tag.name}" %></li>
+      <% @ondemand_categories.each do |category| %>
+      <%# TODO: li タグも含めて related_categories の name を出力してあげる %>
+      <%# 単数例: tag.li('string のデータ') %>
+      <% category.related_categories.each do |related_category| %>
+        <%= tag.li(related_category.name) %>
+      <% end %>
+      <%= tag.li(category.name) %>
       <% end %>
     </ul>
   </div>
 
   <div class="text-sm breadcrumbs">
-  <ul>
-      
-  </ul>
+    <ul>
+      <% @ondemand_tags.each do |tag| %>
+        <li><%= "##{tag.name}" %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
 

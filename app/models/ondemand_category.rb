@@ -8,6 +8,16 @@ class OndemandCategory < ApplicationRecord
 
   scope :root_categories, -> { where(parent_id: [nil, '']) }
 
+  # TODO: parent が空になるまで再帰的に問い合わせる
+  def related_categories
+    result = []
+
+    # 繰り返し処理を書く
+    result << self.parent
+
+    result.compact
+  end
+
   class << self
     def to_group
       hash_grouped_categories =
