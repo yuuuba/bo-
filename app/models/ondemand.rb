@@ -5,8 +5,16 @@ class Ondemand < ApplicationRecord
   has_many :ondemand_searches, dependent: :destroy
   has_many :ondemand_tags, through: :ondemand_searches
   has_many_attached :images
-  has_many :ondemand_categories
+  # has_many :ondemand_categories
 
+  # FIXME: ondemand_categories を取得したい
+  # NG: has_many で持ってこれない
+  # WORK AROUND: where で検索する
+
+  def ondemand_categories
+    OndemandCategory.where(id: ondemand_category_id)
+  end
+  
   def save_tag(sent_tags)
     current_tags = self.ondemand_tags.pluck(:name) unless self.ondemand_tags.nil?
     old_tags = current_tags - sent_tags
