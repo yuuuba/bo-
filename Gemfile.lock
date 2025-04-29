@@ -160,7 +160,7 @@ GEM
     msgpack (1.6.0)
     mysql2 (0.5.4)
     nenv (0.3.0)
-    net-imap (0.4.19)
+    net-imap (0.4.20)
       date
       net-protocol
     net-pop (0.1.2)
